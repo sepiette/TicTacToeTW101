@@ -17,13 +17,17 @@ public class GameTest {
     private PrintStream printStream;
     private Game game;
     private BufferedReader reader;
+    private Player player1;
+    private Player player2;
 
     @Before
     public void setUp() {
         gameBoard = mock(GameBoard.class);
         reader = mock(BufferedReader.class);
         printStream = mock(PrintStream.class);
-        game = new Game(printStream, reader, gameBoard);
+        player1 = mock(Player.class);
+        player2 = mock(Player.class);
+        game = new Game(printStream, gameBoard, player1,player2);
     }
 
     @Test
@@ -34,16 +38,22 @@ public class GameTest {
     }
 
     @Test
-    public void displayPromptMessageForPlayerOneMove() throws Exception {
-        when(reader.readLine()).thenReturn("0");
-        game.promptPlayerOneMove();
+    public void shouldMakePlayerOneTakeFirstTurn() throws Exception {
+        game.start();
         verify(printStream).println("Player One, place X:");
     }
 
     @Test
-    public void reDrawGameBoardWhenPlayerOneEntersPosition() throws IOException {
-        when(reader.readLine()).thenReturn("1");
-        game.placeX();
-        verify(gameBoard).reDraw(1);
+    public void MarkGameBoardWithXWhenPlayerEntersPositionOne() throws IOException {
+        when(player1.takeTurn()).thenReturn(1);
+        game.promptPlayerMove();
+        verify(gameBoard).markBoard(1);
     }
+
+    @Test
+    public void shouldMakePlayerTwoTakeTurnAfterPlayerOneTakesTurn() throws Exception {
+        game.promptPlayerMove();
+        verify(player2).takeTurn();
+    }
+
 }

@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -18,34 +20,39 @@ public class GameBoardTest {
     @Before
     public void setUp() {
         printStream = mock(PrintStream.class);
-        gameBoard = new GameBoard(printStream);
+        List<String> grid = Arrays.asList("1","2","3","4","5","6","7","8","9");
+        gameBoard = new GameBoard(printStream,grid);
+
     }
 
     @Test
     public void shouldPrintNewGameBoardWhenPrintCalled() {
         gameBoard.printBoard();
-        verify(printStream).println("1|2|3");
-        verify(printStream, times(2)).println("-----");
-        verify(printStream).println("4|5|6");
-        verify(printStream).println("7|8|9");
+        verify(printStream).println("1|2|3\n" +
+                "-----\n" +
+                "4|5|6\n" +
+                "-----\n" +
+                "7|8|9");
 
     }
 
     @Test
     public void shouldPrintXInPositionOneWhenPlayerOneEntersOne(){
-        gameBoard.reDraw(1);
-        verify(printStream).println("X|2|3");
-        verify(printStream, times(2)).println("-----");
-        verify(printStream).println("4|5|6");
-        verify(printStream).println("7|8|9");
+        gameBoard.markBoard(1);
+        verify(printStream).println("X|2|3\n" +
+                "-----\n" +
+                "4|5|6\n" +
+                "-----\n" +
+                "7|8|9");
     }
 
     @Test
     public void shouldPrintXInPositionTwoWhenPlayerOneEntersTwo() throws Exception {
-        gameBoard.reDraw(2);
-        verify(printStream).println("1|X|3");
-        verify(printStream, times(2)).println("-----");
-        verify(printStream).println("4|5|6");
-        verify(printStream).println("7|8|9");
+        gameBoard.markBoard(2);
+        verify(printStream).println("1|X|3\n" +
+                "-----\n" +
+                "4|5|6\n" +
+                "-----\n" +
+                "7|8|9");
     }
 }

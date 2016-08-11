@@ -1,41 +1,50 @@
 package com.thoughtworks.tictactoe;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintStream;
 
 public class Game {
 
-    private BufferedReader reader;
     private GameBoard gameBoard;
+    private Player player1;
+    private Player player2;
     private PrintStream printStream;
+    private Player currentPlayer;
 
 
-    public Game(PrintStream printStream, BufferedReader reader, GameBoard gameBoard) {
+    public Game(PrintStream printStream, GameBoard gameBoard, Player player1, Player player2) {
         this.printStream = printStream;
-        this.reader = reader;
         this.gameBoard = gameBoard;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.currentPlayer = null;
     }
 
     public void start() {
         gameBoard.printBoard();
-        promptPlayerOneMove();
-
+        promptPlayerMove();
     }
 
-    public void promptPlayerOneMove() {
-        printStream.println("Player One, place X:");
-        placeX();
+    public void promptPlayerMove() {
+        swapPlayer();
+        executePlayerMove();
+        swapPlayer();
+        executePlayerMove();
     }
 
-    public void placeX() {
-        int xPlace = -1;
-        try {
-            xPlace = Integer.parseInt(reader.readLine());
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void swapPlayer() {
+        if(currentPlayer == player1){
+            currentPlayer = player2;
+            printStream.println("Player Two, place O:");
         }
-        gameBoard.reDraw(xPlace);
+        else{
+            currentPlayer = player1;
+            printStream.println("Player One, place X:");
+        }
     }
+
+    private void executePlayerMove() {
+        int place = currentPlayer.takeTurn();
+        gameBoard.markBoard(place);
+    }
+
 }
