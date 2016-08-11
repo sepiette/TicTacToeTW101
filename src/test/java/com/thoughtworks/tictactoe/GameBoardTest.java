@@ -24,7 +24,7 @@ public class GameBoardTest {
 
     }
     @Test
-    public void shouldPrintXInPositionOneWhenUserEntersOne(){
+    public void shouldPrintXInPositionOneWhenPlayerOneEntersOne(){
         PrintStream printStream = mock(PrintStream.class);
         GameBoard gameBoard = new GameBoard(printStream);
         gameBoard.reDraw();

@@ -19,7 +19,7 @@ public class GameBoard {
     }
 
     public void reDraw() {
-        printStream.println("X˚|2|3");
+        printStream.println("X|2|3");
         printStream.println("-----");
         printStream.println("4|5|6");
         printStream.println("-----");

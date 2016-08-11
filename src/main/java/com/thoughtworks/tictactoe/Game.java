@@ -22,4 +22,8 @@ public class Game {
     public void promptPlayerOneMove() {
         printStream.println("Player One, enter a cell number to place X:");
     }
+
+    public void placeX() {
+        gameBoard.reDraw();
+    }
 }

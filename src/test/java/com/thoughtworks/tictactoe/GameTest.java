@@ -37,5 +37,9 @@ public class GameTest {
         verify(printStream).println("Player One, enter a cell number to place X:");
     }
 
-
+    @Test
+    public void reDrawGameBoardWhenPlayerOneEntersPosition(){
+        game.placeX();
+        verify(gameBoard).reDraw();
+    }
 }
