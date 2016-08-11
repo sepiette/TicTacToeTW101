@@ -31,6 +31,10 @@ public class GameBoard {
     }
 
     public boolean verifyCellIsNotMarked(int position){
+        if(grid.get(position-1).equals("X") || grid.get(position-1).equals("O")){
+            printStream.println("Space already filled. Pick another:");
+            return false;
+        }
         return true;
     }
 }

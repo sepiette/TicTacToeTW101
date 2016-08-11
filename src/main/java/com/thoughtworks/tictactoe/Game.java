@@ -48,6 +48,9 @@ public class Game {
 
     private void executePlayerMove() {
         int cell = currentPlayer.takeTurn();
+//        while(!gameBoard.verifyCellIsNotMarked(cell)){
+//            cell = currentPlayer.takeTurn();
+//        }
         gameBoard.markBoard(cell, playerMark);
     }
 
