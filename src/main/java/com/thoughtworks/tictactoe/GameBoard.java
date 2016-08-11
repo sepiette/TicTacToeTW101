@@ -25,8 +25,8 @@ public class GameBoard {
         printStream.println(board);
     }
 
-    public void markBoard(int position) {
-        grid.set(position-1,"X");
+    public void markBoard(int position, String mark) {
+        grid.set(position-1, mark);
         printBoard();
     }
 }

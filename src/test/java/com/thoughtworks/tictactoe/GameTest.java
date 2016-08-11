@@ -40,19 +40,19 @@ public class GameTest {
     @Test
     public void shouldMakePlayerOneTakeFirstTurn() throws Exception {
         game.start();
-        verify(printStream).println("Player One, place X:");
+        verify(player1).takeTurn();
     }
 
     @Test
     public void MarkGameBoardWithXWhenPlayerEntersPositionOne() throws IOException {
         when(player1.takeTurn()).thenReturn(1);
-        game.promptPlayerMove();
-        verify(gameBoard).markBoard(1);
+        game.start();
+        verify(gameBoard).markBoard(1,"X");
     }
 
     @Test
     public void shouldMakePlayerTwoTakeTurnAfterPlayerOneTakesTurn() throws Exception {
-        game.promptPlayerMove();
+        game.start();
         verify(player2).takeTurn();
     }
 

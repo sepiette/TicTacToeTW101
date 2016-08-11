@@ -38,7 +38,7 @@ public class GameBoardTest {
 
     @Test
     public void shouldPrintXInPositionOneWhenPlayerOneEntersOne(){
-        gameBoard.markBoard(1);
+        gameBoard.markBoard(1,"X");
         verify(printStream).println("X|2|3\n" +
                 "-----\n" +
                 "4|5|6\n" +
@@ -46,10 +46,11 @@ public class GameBoardTest {
                 "7|8|9");
     }
 
+
     @Test
-    public void shouldPrintXInPositionTwoWhenPlayerOneEntersTwo() throws Exception {
-        gameBoard.markBoard(2);
-        verify(printStream).println("1|X|3\n" +
+    public void shouldPrintOInPositionTwoWhenPlayerTwoEntersTwo() throws Exception {
+        gameBoard.markBoard(2,"O");
+        verify(printStream).println("1|O|3\n" +
                 "-----\n" +
                 "4|5|6\n" +
                 "-----\n" +
