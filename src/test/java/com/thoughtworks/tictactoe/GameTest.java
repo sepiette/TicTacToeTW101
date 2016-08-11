@@ -44,16 +44,17 @@ public class GameTest {
     }
 
     @Test
+    public void shouldMakePlayerTwoTakeTurnAfterPlayerOneTakesTurn() throws Exception {
+        game.start();
+        verify(player2).takeTurn();
+    }
+
+    @Test
     public void MarkGameBoardWithXWhenPlayerEntersPositionOne() throws IOException {
         when(player1.takeTurn()).thenReturn(1);
         game.start();
         verify(gameBoard).markBoard(1,"X");
     }
 
-    @Test
-    public void shouldMakePlayerTwoTakeTurnAfterPlayerOneTakesTurn() throws Exception {
-        game.start();
-        verify(player2).takeTurn();
-    }
 
 }

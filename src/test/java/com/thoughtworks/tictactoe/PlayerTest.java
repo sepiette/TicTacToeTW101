@@ -31,8 +31,8 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldReturnTwoWhenPlayerChoosesCellTwo() throws Exception {
-        when(reader.readLine()).thenReturn("2");
-        assertEquals(2,player.takeTurn());
+    public void shouldReturnOneWhenPlayerChoosesCellTwo() throws Exception {
+        when(reader.readLine()).thenReturn("1");
+        assertEquals(1,player.takeTurn());
     }
 }

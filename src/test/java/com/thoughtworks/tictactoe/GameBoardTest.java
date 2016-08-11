@@ -7,9 +7,9 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class GameBoardTest {
 
@@ -55,5 +55,10 @@ public class GameBoardTest {
                 "4|5|6\n" +
                 "-----\n" +
                 "7|8|9");
+    }
+
+    @Test
+    public void shouldReturnTrueWhenCellIsNotMarked() throws Exception {
+        assertTrue(gameBoard.verifyCellIsNotMarked(1));
     }
 }

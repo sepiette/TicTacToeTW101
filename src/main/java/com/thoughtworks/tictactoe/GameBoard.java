@@ -29,4 +29,8 @@ public class GameBoard {
         grid.set(position-1, mark);
         printBoard();
     }
+
+    public boolean verifyCellIsNotMarked(int position){
+        return true;
+    }
 }
