@@ -35,26 +35,20 @@ public class GameTest {
         verify(gameBoard).printBoard();
     }
 
-//    @Test
-//    public void shouldMakePlayerOneTakeFirstTurn() throws Exception {
-//        when(reader.readLine()).thenReturn("1","2");
-//        game.start();
-//        verify(player1).takeTurn();
-//    }
-//
-//    @Test
-//    public void shouldMakePlayerTwoTakeTurnAfterPlayerOneTakesTurn() throws Exception {
-//        when(reader.readLine()).thenReturn("1","2");
-//        game.start();
-//        verify(player2).takeTurn();
-//    }
-//
-//    @Test
-//    public void MarkGameBoardWithXWhenPlayerEntersPositionOne() throws IOException {
-//        when(player1.takeTurn()).thenReturn(1).thenReturn(2);
-//        game.start();
-//        verify(gameBoard).markBoard(1,"X");
-//    }
+    @Test
+    public void shouldHaveTwoDifferentPlayersTakeTurnsWhenGameRuns() throws Exception {
+        when(reader.readLine()).thenReturn("1");
+        game.start();
+        verify(player1).takeTurn();
+        verify(player2).takeTurn();
+    }
+
+    @Test
+    public void MarkGameBoardWithXWhenPlayerEntersPositionOne() throws IOException {
+        when(player1.takeTurn()).thenReturn(1).thenReturn(2);
+        game.start();
+        verify(gameBoard).markBoard(1,"X");
+    }
 
 
 }

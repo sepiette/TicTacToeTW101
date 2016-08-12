@@ -23,6 +23,7 @@ public class PlayerTest {
         player = new Player(reader);
     }
 
+
     @Test
     public void shouldReturnOneWhenPlayerChoosesCellOne() throws Exception {
         when(reader.readLine()).thenReturn("1");
